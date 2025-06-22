@@ -230,6 +230,21 @@ function App() {
 
   return (
     <div className="App">
+      {/* Preload headshot during loader */}
+      {isLoaderVisible && (
+        <img
+          src={headshot}
+          alt=""
+          style={{
+            position: "absolute",
+            left: "-9999px",
+            width: "1px",
+            height: "1px",
+            opacity: 0,
+            pointerEvents: "none",
+          }}
+        />
+      )}
       {isLoaderVisible && (
         <div className={`loader-wrapper ${isFadingOut ? "fade-out" : ""}`}>
           <Loader type="ball-pulse-sync" active />
@@ -243,9 +258,7 @@ function App() {
                 <img src={headshot} alt="headshot" className="headshot" />
                 <div className="header-title">
                   <h1>Nicholas Channg</h1>
-                  <p className="intro-text">
-                    Computer Science @ Cornell University
-                  </p>
+                  <p className="intro-text">Computer Science @ Cornell</p>
                   <p className="intro-text">Software Engineer @ Tesla</p>
                 </div>
               </div>
@@ -302,7 +315,7 @@ function App() {
                   title="nickchanng.com"
                   description="Personal Website"
                   id="008"
-                  githubLink=""
+                  githubLink="https://github.com/NicholasChanng/nickchanng.com"
                 />
                 <ProjectCard
                   title="TripTune"

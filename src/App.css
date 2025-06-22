@@ -366,6 +366,7 @@ main > .section-title:first-of-type {
 .card-header a,
 .external-link-icon {
   text-decoration: none !important;
+  cursor: pointer;
 }
 
 .card-subtitle {
