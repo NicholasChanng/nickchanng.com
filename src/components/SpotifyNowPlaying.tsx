@@ -22,7 +22,7 @@ interface SpotifyNowPlayingProps {
 }
 
 const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
-  apiUrl = "https://nickchanng-com-backend.onrender.com/",
+  apiUrl = "https://nickchanng-com-backend.onrender.com",
 }) => {
   const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const [isLoading, setIsLoading] = useState(true);
