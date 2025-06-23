@@ -341,7 +341,7 @@ function App() {
                   githubLink="https://github.com/NicholasChanng/cs3110-final-project"
                 />
                 <ProjectCard
-                  title="Prarkiti"
+                  title="Prakriti"
                   description="1st Place @ Cornell Digital Agriculture Hackathon"
                   id="003"
                   githubLink="https://github.com/NicholasChanng/prakriti"
