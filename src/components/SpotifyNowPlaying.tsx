@@ -202,8 +202,21 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             className="spotify-link"
+            style={{ position: "relative", display: "inline-block" }}
           >
             <img src={track.albumImage} alt={`${track.album} album cover`} />
+            <span className="spotify-play-overlay">
+              <svg
+                width="38"
+                height="38"
+                viewBox="0 0 38 38"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="19" cy="19" r="19" fill="rgba(0,0,0,0.45)" />
+                <polygon points="15,11 28,19 15,27" fill="#fff" />
+              </svg>
+            </span>
           </a>
         </div>
       </div>

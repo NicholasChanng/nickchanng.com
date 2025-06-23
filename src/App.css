@@ -613,7 +613,6 @@ main > .section-title:first-of-type {
 }
 
 .spotify-link:hover img {
-  transform: scale(1.05);
   box-shadow: 0 4px 16px var(--shadow-color);
 }
 
@@ -654,4 +653,16 @@ main > .section-title:first-of-type {
     width: 64px;
     height: 64px;
   }
+}
+
+.spotify-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
 }
