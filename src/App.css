@@ -241,10 +241,6 @@ header {
   margin-top: 6px;
 }
 
-section {
-  margin-bottom: 38px;
-}
-
 h2 {
   font-size: 1.4rem;
   margin-bottom: 18px;
@@ -352,6 +348,7 @@ main > .section-title:first-of-type {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .card-header a .github-icon {
@@ -505,12 +502,6 @@ main > .section-title:first-of-type {
   font-weight: 600;
 }
 
-.games-title {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
 .live-indicator {
   display: flex;
   align-items: center;
@@ -547,4 +538,120 @@ main > .section-title:first-of-type {
 
 .card-header a:hover .external-link-icon {
   color: var(--text-color);
+}
+
+/* --- Spotify Section Styles --- */
+
+.spotify-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.spotify-song-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1.5rem 2rem;
+  margin-top: 1rem;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    background-color 0.3s, border-color 0.3s;
+}
+
+.spotify-song-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.spotify-song-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.spotify-song-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.spotify-song-artists {
+  font-size: 1.05rem;
+  color: var(--subtle-text-color);
+  font-weight: 500;
+}
+
+.spotify-song-album {
+  font-size: 1rem;
+  color: var(--subtle-text-color);
+}
+
+.spotify-album-art {
+  margin-left: 2.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.spotify-album-art img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow-color);
+  object-fit: cover;
+  background: var(--container-bg);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.spotify-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.spotify-link:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.spotify-album-placeholder {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  background: var(--card-bg);
+  border: 2px dashed var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--subtle-text-color);
+  font-size: 0.9rem;
+}
+
+.spotify-song-card.error {
+  border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.05);
+}
+
+.spotify-song-card.error .spotify-song-title {
+  color: #ff6b6b;
+}
+
+@media (max-width: 600px) {
+  .spotify-song-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+  .spotify-album-art {
+    margin-left: 0;
+    margin-top: 1rem;
+  }
+  .spotify-album-art img,
+  .spotify-album-placeholder {
+    width: 64px;
+    height: 64px;
+  }
 }

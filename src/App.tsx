@@ -8,6 +8,7 @@ import { GithubIcon } from "./icons/GithubIcon";
 import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
+import SpotifyNowPlaying from "./components/SpotifyNowPlaying";
 
 const Card = ({
   title,
@@ -181,6 +182,13 @@ const StatusBar = () => {
   );
 };
 
+function getCookie(name: string) {
+  return document.cookie.split("; ").reduce((r, v) => {
+    const parts = v.split("=");
+    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
+  }, "");
+}
+
 function setCookie(name: string, value: string, days = 365) {
   const expires = new Date(Date.now() + days * 864e5).toUTCString();
   document.cookie =
@@ -191,19 +199,6 @@ function setCookie(name: string, value: string, days = 365) {
     expires +
     "; path=/";
 }
-
-function getCookie(name: string) {
-  return document.cookie.split("; ").reduce((r, v) => {
-    const parts = v.split("=");
-    return parts[0] === name ? decodeURIComponent(parts[1]) : r;
-  }, "");
-}
-
-const LiveCircleIcon = () => (
-  <span className="live-indicator">
-    <span className="live-dot" /> Live
-  </span>
-);
 
 function App() {
   const [isLoaderVisible, setLoaderVisible] = React.useState(true);
@@ -225,7 +220,7 @@ function App() {
   }, []);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+    setTheme((prev: string) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
@@ -290,6 +285,10 @@ function App() {
             </header>
             <StatusBar />
             <main>
+              <div className="section-divider" />
+
+              <SpotifyNowPlaying />
+
               <div className="section-divider" />
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
@@ -378,9 +377,7 @@ function App() {
               </div>
               <div className="section-divider" />
 
-              <h2 className="section-title games-title">
-                Games I Play <LiveCircleIcon />
-              </h2>
+              <h2 className="section-title">Games I Play</h2>
               <div className="card-gallery games-gallery">
                 <GameCard
                   game="Valorant"
