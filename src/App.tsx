@@ -214,7 +214,7 @@ function App() {
     const timer = setTimeout(() => {
       setFadingOut(true);
       setTimeout(() => setLoaderVisible(false), 500);
-    }, 2000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);

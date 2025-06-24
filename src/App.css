@@ -609,6 +609,7 @@ main > .section-title:first-of-type {
 .spotify-link {
   display: block;
   text-decoration: none;
+  height: 120px;
   transition: transform 0.2s ease-in-out;
 }
 
@@ -617,8 +618,8 @@ main > .section-title:first-of-type {
 }
 
 .spotify-album-placeholder {
-  width: 120px;
-  height: 120px;
+  width: calc(120px - 3.33px);
+  height: calc(120px - 3.33px);
   border-radius: 12px;
   background: var(--card-bg);
   border: 2px dashed var(--card-border);
@@ -626,7 +627,6 @@ main > .section-title:first-of-type {
   align-items: center;
   justify-content: center;
   color: var(--subtle-text-color);
-  font-size: 0.9rem;
 }
 
 .spotify-song-card.error {
@@ -639,6 +639,10 @@ main > .section-title:first-of-type {
 }
 
 @media (max-width: 600px) {
+  .spotify-link {
+    height: 80px;
+    width: 80px;
+  }
   .spotify-song-card {
     flex-direction: column;
     align-items: flex-start;
@@ -650,8 +654,8 @@ main > .section-title:first-of-type {
   }
   .spotify-album-art img,
   .spotify-album-placeholder {
-    width: 64px;
-    height: 64px;
+    width: calc(80px - 3.33px);
+    height: calc(80px - 3.33px);
   }
 }
 
