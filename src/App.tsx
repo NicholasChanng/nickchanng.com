@@ -70,16 +70,23 @@ const ExperienceCard = ({
   years,
   logo,
   link,
+  metaLeft,
 }: {
   title: string;
   company: string;
   years: string;
   logo?: React.ReactNode;
   link?: string;
+  metaLeft?: string;
 }) => (
   <Card
     title={title}
-    footerContent={<span>{years}</span>}
+    footerContent={
+      <div className="card-footer-row">
+        <span className="card-meta-left">{metaLeft}</span>
+        <span className="card-meta-right">{years}</span>
+      </div>
+    }
     headerPrefix={logo}
     headerSuffix={
       link ? (
@@ -98,15 +105,22 @@ const EducationCard = ({
   degree,
   years,
   link,
+  metaLeft,
 }: {
   school: string;
   degree: string;
   years: string;
   link?: string;
+  metaLeft?: string;
 }) => (
   <Card
     title={school}
-    footerContent={<span>{years}</span>}
+    footerContent={
+      <div className="card-footer-row">
+        <span className="card-meta-left">{metaLeft}</span>
+        <span className="card-meta-right">{years}</span>
+      </div>
+    }
     headerSuffix={
       link ? (
         <a href={link} target="_blank" rel="noopener noreferrer">
@@ -286,10 +300,6 @@ function App() {
             <StatusBar />
             <main>
               <div className="section-divider" />
-
-              <SpotifyNowPlaying />
-
-              <div className="section-divider" />
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
                 <ExperienceCard
@@ -298,6 +308,7 @@ function App() {
                   years="Fall 2025"
                   logo={<AmazonLogo />}
                   link="https://www.amazon.com"
+                  metaLeft=". . ."
                 />
                 <ExperienceCard
                   title="Tesla"
@@ -305,8 +316,12 @@ function App() {
                   years="May 2025-Present"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
+                  metaLeft="Digital Experience"
                 />
               </div>
+              <div className="section-divider" />
+              <SpotifyNowPlaying />
+
               <div className="section-divider" />
               <h2 className="section-title">Projects</h2>
               <div className="card-gallery project-gallery">
@@ -364,15 +379,17 @@ function App() {
               <div className="card-gallery">
                 <EducationCard
                   school="Cornell University"
-                  degree="B.A. in Computer Science"
+                  degree="B.A. Computer Science"
                   years="2023-2026"
                   link="https://www.cornell.edu"
+                  metaLeft="GPA: 3.72"
                 />
                 <EducationCard
                   school="Bridgewater-Raritan High School"
                   degree="High School Diploma"
                   years="2019-2023"
                   link="https://hs.brrsd.org/"
+                  metaLeft="GPA: 4.7"
                 />
               </div>
               <div className="section-divider" />

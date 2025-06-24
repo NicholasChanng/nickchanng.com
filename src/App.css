@@ -8,7 +8,7 @@
   --container-border: #e5e5e5;
   --card-bg: #f5f5f7;
   --card-border: #e5e5e5;
-  --subtle-text-color: #86868b;
+  --subtle-text-color: #666669;
   --headshot-border: #e5e5e5;
   --shadow-color: rgba(0, 0, 0, 0.08);
   --accent-color: red;
@@ -208,6 +208,27 @@ header {
   margin-top: 1rem;
 }
 
+.card-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 1.5rem;
+}
+
+.card-meta-left {
+  color: var(--subtle-text-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.card-meta-right {
+  color: var(--subtle-text-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: right;
+}
+
 /* Portfolio Layout Styles */
 .portfolio-container {
   max-width: 900px;
@@ -318,7 +339,7 @@ h2 {
   }
 }
 .section-title {
-  margin: 2.5rem 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--subtle-text-color);
@@ -640,8 +661,8 @@ main > .section-title:first-of-type {
 
 @media (max-width: 600px) {
   .spotify-link {
-    height: 80px;
-    width: 80px;
+    height: calc(80px - 3.33px);
+    width: calc(80px - 3.33px);
   }
   .spotify-song-card {
     flex-direction: column;
