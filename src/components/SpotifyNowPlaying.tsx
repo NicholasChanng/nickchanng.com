@@ -134,7 +134,7 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
         <div className="spotify-song-card">
           <div className="spotify-song-info">
             <div className="spotify-song-title">Loading...</div>
-            <div className="spotify-song-artists">Fetching your music</div>
+            <div className="spotify-song-artists">Fetching Nick's music</div>
             <div className="spotify-song-album">Please wait</div>
           </div>
           <div className="spotify-album-art">
@@ -176,7 +176,7 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
           <div className="spotify-song-info">
             <div className="spotify-song-title">No recent tracks</div>
             <div className="spotify-song-artists">
-              Start listening to see your music
+              Wait for Nick to listen to music
             </div>
             <div className="spotify-song-album">Updates every 30 seconds</div>
           </div>

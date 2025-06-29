@@ -319,8 +319,6 @@ function App() {
                   metaLeft="Charging + Upgrades"
                 />
               </div>
-              <div className="section-divider" />
-              <SpotifyNowPlaying />
 
               <div className="section-divider" />
               <h2 className="section-title">Projects</h2>
@@ -374,6 +372,7 @@ function App() {
                   githubLink="https://github.com/rolandyangg/vizAsianHate"
                 />
               </div>
+
               <div className="section-divider" />
               <h2 className="section-title">Education</h2>
               <div className="card-gallery">
@@ -392,6 +391,10 @@ function App() {
                   metaLeft="GPA: 4.7"
                 />
               </div>
+
+              <div className="section-divider" />
+              <SpotifyNowPlaying />
+
               <div className="section-divider" />
 
               <h2 className="section-title">Games I Play</h2>
