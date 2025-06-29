@@ -316,7 +316,7 @@ function App() {
                   years="May 2025-Present"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
-                  metaLeft="Digital Experience"
+                  metaLeft="Charging + Upgrades"
                 />
               </div>
               <div className="section-divider" />
