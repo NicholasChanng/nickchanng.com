@@ -288,7 +288,7 @@ function App() {
                     GitHub
                   </a>
                   <a
-                    href="https://drive.google.com/file/d/1puffSb-jznyIvGM38u2BxZfd9fdYiGdv/view"
+                    href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
