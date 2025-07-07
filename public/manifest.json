@@ -1,0 +1,29 @@
+{
+  "short_name": "Nick Channg",
+  "name": "Nicholas Channg - Personal Website",
+  "description": "Personal website of Nicholas Channg, Computer Science student at Cornell University and Software Engineer at Tesla",
+  "icons": [
+    {
+      "src": "FlamingLogo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "FlamingLogo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "FlamingLogo.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f5f5f7",
+  "background_color": "#f5f5f7",
+  "orientation": "portrait-primary",
+  "categories": ["personal", "portfolio", "education"],
+  "lang": "en"
+}

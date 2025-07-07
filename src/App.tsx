@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import headshot from "./assets/headshot.png";
-import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
 import { GithubIcon } from "./icons/GithubIcon";
@@ -9,6 +8,7 @@ import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import SpotifyNowPlaying from "./components/SpotifyNowPlaying";
+import FluidGlass from "./components/FluidGlass/FluidGlass";
 
 const Card = ({
   title,
@@ -191,7 +191,17 @@ const StatusBar = () => {
 
   return (
     <div className="status-bar">
-      <span>PST {formattedTime}</span>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          gap: "0.25rem",
+        }}
+      >
+        <span>📍 Fremont, CA</span>
+        <span>PST {formattedTime}</span>
+      </div>
     </div>
   );
 };
@@ -239,6 +249,16 @@ function App() {
 
   return (
     <div className="App">
+      <FluidGlass
+        mode="lens" // or "bar", "cube"
+        lensProps={{
+          scale: 0.25,
+          ior: 1.15,
+          thickness: 5,
+          chromaticAberration: 0.1,
+          anisotropy: 0.01,
+        }}
+      />
       {/* Preload headshot during loader */}
       {isLoaderVisible && (
         <img
@@ -256,7 +276,11 @@ function App() {
       )}
       {isLoaderVisible && (
         <div className={`loader-wrapper ${isFadingOut ? "fade-out" : ""}`}>
-          <Loader type="ball-pulse-sync" active />
+          <div className="ball-pulse-sync">
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
         </div>
       )}
       {!isLoaderVisible && (
