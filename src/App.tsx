@@ -191,7 +191,17 @@ const StatusBar = () => {
 
   return (
     <div className="status-bar">
-      <span>PST {formattedTime}</span>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
+          gap: "0.25rem",
+        }}
+      >
+        <span>Fremont, CA</span>
+        <span>{formattedTime} PST</span>
+      </div>
     </div>
   );
 };
@@ -316,7 +326,7 @@ function App() {
                   years="May 2025-Present"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
-                  metaLeft="Charging + Upgrades"
+                  metaLeft="Charging + Referral"
                 />
               </div>
 
