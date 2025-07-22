@@ -326,7 +326,7 @@ function App() {
                   years="May 2025-Present"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
-                  metaLeft="Charging + Referral"
+                  metaLeft="AI Agent + Tesla Mobile App"
                 />
               </div>
 
@@ -355,7 +355,7 @@ function App() {
                   title="MathGPT"
                   description="AI Math Tutor Chrome Extension"
                   id="005"
-                  githubLink="https://chromewebstore.google.com/detail/mathgpt-ai-integral-calcu/eigepigbinecchjcgogpioinidpgamcm"
+                  githubLink="https://chromewebstore.google.com/search/mathgpt"
                 />
                 <ProjectCard
                   title="OCaml Casino"
