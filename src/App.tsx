@@ -77,7 +77,7 @@ const ExperienceCard = ({
   years: string;
   logo?: React.ReactNode;
   link?: string;
-  metaLeft?: string;
+  metaLeft?: React.ReactNode;
 }) => (
   <Card
     title={title}
@@ -318,7 +318,18 @@ function App() {
                   years="Fall 2025"
                   logo={<AmazonLogo />}
                   link="https://www.amazon.com"
-                  metaLeft=". . ."
+                  metaLeft={
+                    <>
+                      <a
+                        href="https://advertising.amazon.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        Amazon Ads
+                      </a>
+                    </>
+                  }
                 />
                 <ExperienceCard
                   title="Tesla"
@@ -326,7 +337,27 @@ function App() {
                   years="May 2025-Present"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
-                  metaLeft="AI Agent + Tesla Mobile App"
+                  metaLeft={
+                    <>
+                      <a
+                        href="https://www.tesla.com/AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        AI Agent
+                      </a>
+                      {" + "}
+                      <a
+                        href="https://apps.apple.com/us/app/tesla/id582007913"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        Tesla Mobile App
+                      </a>
+                    </>
+                  }
                 />
               </div>
 
