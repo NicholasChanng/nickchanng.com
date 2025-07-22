@@ -377,7 +377,7 @@ function App() {
                 />
                 <ProjectCard
                   title="vizAsianHate"
-                  description="Interactivity Award & Wolfram Award @ Vizathon 2021"
+                  description="Interactivity Award & Top 12 @ Vizathon 2021"
                   id="001"
                   githubLink="https://github.com/rolandyangg/vizAsianHate"
                 />
