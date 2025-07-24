@@ -80,7 +80,7 @@ const ExperienceCard = ({
   metaLeft?: React.ReactNode;
 }) => (
   <Card
-    title={title}
+    title={company}
     footerContent={
       <div className="card-footer-row">
         <span className="card-meta-left">{metaLeft}</span>
@@ -96,7 +96,7 @@ const ExperienceCard = ({
       ) : undefined
     }
   >
-    <p className="card-subtitle">{company}</p>
+    <p className="card-subtitle">{title}</p>
   </Card>
 );
 
@@ -313,8 +313,8 @@ function App() {
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
                 <ExperienceCard
-                  title="Amazon"
-                  company="Incoming SDE Intern"
+                  title="Incoming SDE Intern"
+                  company="Amazon"
                   years="Fall 2025"
                   logo={<AmazonLogo />}
                   link="https://www.amazon.com"
@@ -332,9 +332,9 @@ function App() {
                   }
                 />
                 <ExperienceCard
-                  title="Tesla"
-                  company="Software Engineer Intern"
-                  years="May 2025-Present"
+                  title="Software Engineer Intern"
+                  company="Tesla"
+                  years="Summer 2025"
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
                   metaLeft={
@@ -345,7 +345,7 @@ function App() {
                         rel="noopener noreferrer"
                         className="card-meta-link"
                       >
-                        AI Agent
+                        Charging AI Agent
                       </a>
                       {" + "}
                       <a
