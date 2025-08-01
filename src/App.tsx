@@ -338,14 +338,25 @@ function App() {
                   logo={<TeslaLogo />}
                   link="https://www.tesla.com"
                   metaLeft={
-                    <a
-                      href="https://apps.apple.com/us/app/tesla/id582007913"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="card-meta-link"
-                    >
-                      Charging Team
-                    </a>
+                    <>
+                      <a
+                        href="https://www.tesla.com/AI"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        AI Agent
+                      </a>
+                      {" + "}
+                      <a
+                        href="https://apps.apple.com/us/app/tesla/id582007913"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        Charging Team
+                      </a>
+                    </>
                   }
                 />
               </div>
