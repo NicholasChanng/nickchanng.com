@@ -339,7 +339,7 @@ function App() {
                   link="https://www.tesla.com"
                   metaLeft={
                     <>
-                      <a
+                      {/* <a
                         href="https://www.tesla.com/AI"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -347,7 +347,7 @@ function App() {
                       >
                         AI Agent
                       </a>
-                      {" + "}
+                      {" + "} */}
                       <a
                         href="https://apps.apple.com/us/app/tesla/id582007913"
                         target="_blank"
