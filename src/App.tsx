@@ -297,13 +297,13 @@ function App() {
                   >
                     GitHub
                   </a>
-                  <a
+                  {/* <a
                     href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     Resume
-                  </a>
+                  </a> */}
                 </div>
               </nav>
             </header>
