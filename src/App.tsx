@@ -278,7 +278,7 @@ function App() {
                 <div className="header-title">
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
-                  <p className="intro-text">Software Engineer @ Tesla</p>
+                  <p className="intro-text">Software Engineer @ Amazon</p>
                 </div>
               </div>
               <nav className="header-nav">
@@ -313,9 +313,9 @@ function App() {
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
                 <ExperienceCard
-                  title="Incoming SDE Intern"
+                  title="Software Development Engineer Intern"
                   company="Amazon"
-                  years="Fall 2025"
+                  years="Sep 2025-Present"
                   logo={<AmazonLogo />}
                   link="https://www.amazon.com"
                   metaLeft={
@@ -358,6 +358,25 @@ function App() {
                       </a>
                     </>
                   }
+                />
+              </div>
+
+              <div className="section-divider" />
+              <h2 className="section-title">Education</h2>
+              <div className="card-gallery">
+                <EducationCard
+                  school="Cornell University"
+                  degree="B.A. Computer Science"
+                  years="2023-2027"
+                  link="https://www.cornell.edu"
+                  metaLeft="GPA: 3.72"
+                />
+                <EducationCard
+                  school="Bridgewater-Raritan High School"
+                  degree="High School Diploma"
+                  years="2019-2023"
+                  link="https://hs.brrsd.org/"
+                  metaLeft="GPA: 4.7"
                 />
               </div>
 
@@ -411,25 +430,6 @@ function App() {
                   description="Interactivity Award & Top 12 @ Vizathon 2021"
                   id="001"
                   githubLink="https://github.com/rolandyangg/vizAsianHate"
-                />
-              </div>
-
-              <div className="section-divider" />
-              <h2 className="section-title">Education</h2>
-              <div className="card-gallery">
-                <EducationCard
-                  school="Cornell University"
-                  degree="B.A. Computer Science"
-                  years="2023-2027"
-                  link="https://www.cornell.edu"
-                  // metaLeft="GPA: 3.72"
-                />
-                <EducationCard
-                  school="Bridgewater-Raritan High School"
-                  degree="High School Diploma"
-                  years="2019-2023"
-                  link="https://hs.brrsd.org/"
-                  metaLeft="GPA: 4.7"
                 />
               </div>
 
