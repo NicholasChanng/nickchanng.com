@@ -326,7 +326,7 @@ function App() {
                         rel="noopener noreferrer"
                         className="card-meta-link"
                       >
-                        Amazon Ads
+                        Sponsored Product Video
                       </a>
                     </>
                   }
