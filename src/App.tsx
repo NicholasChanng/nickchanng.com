@@ -321,7 +321,7 @@ function App() {
                   metaLeft={
                     <>
                       <a
-                        href="https://advertising.amazon.com/solutions/products/sponsored-products"
+                        href="https://advertising.amazon.com/library/guides/sponsored-products-video"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="card-meta-link"
