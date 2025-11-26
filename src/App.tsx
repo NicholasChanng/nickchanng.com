@@ -442,7 +442,7 @@ function App() {
               <div className="card-gallery games-gallery">
                 <GameCard
                   game="Valorant"
-                  currentRank="Diamond 3"
+                  currentRank="Ascendant 1"
                   peakRank="Immortal 3"
                   hoursPlayed={819}
                   link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
