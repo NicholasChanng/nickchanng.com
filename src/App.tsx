@@ -278,7 +278,6 @@ function App() {
                 <div className="header-title">
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
-                  <p className="intro-text">Software Engineer @ Amazon</p>
                 </div>
               </div>
               <nav className="header-nav">
@@ -315,7 +314,7 @@ function App() {
                 <ExperienceCard
                   title="Software Development Engineer Intern"
                   company="Amazon"
-                  years="Sep 2025-Present"
+                  years="Sep 2025-Dec 2025"
                   logo={<AmazonLogo />}
                   link="https://www.amazon.com"
                   metaLeft={
