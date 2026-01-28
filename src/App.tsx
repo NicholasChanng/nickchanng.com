@@ -199,7 +199,7 @@ const StatusBar = () => {
           gap: "0.25rem",
         }}
       >
-        <span>New York, NY</span>
+        <span>Ithaca, NY</span>
         <span>{formattedTime} EST</span>
       </div>
     </div>
@@ -279,7 +279,7 @@ function App() {
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
                   <p className="intro-text">
-                    Interested in AI/ML Infra & Distributed Systems
+                    Interested in AI Platforms & Distributed Systems
                   </p>
                 </div>
               </div>
