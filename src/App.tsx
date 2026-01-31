@@ -436,8 +436,8 @@ function App() {
                 <GameCard
                   game="Valorant"
                   currentRank="Ascendant 1"
-                  peakRank="Immortal 3"
-                  hoursPlayed={819}
+                  peakRank="Immortal 3, #3,825"
+                  hoursPlayed={873}
                   link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
                 />
                 <GameCard
