@@ -315,7 +315,7 @@ function App() {
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
                 <ExperienceCard
-                  title="Software Development Engineer Intern"
+                  title="Software Engineer Intern"
                   company="Amazon"
                   years="Sep 2025-Dec 2025"
                   logo={<AmazonLogo />}
