@@ -286,7 +286,7 @@ function App() {
               <nav className="header-nav">
                 <div className="nav-section">
                   <a
-                    href="https://www.linkedin.com/in/nicholaschanng/"
+                    href="https://www.linkedin.com/in/nickchanng/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
