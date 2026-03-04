@@ -3,7 +3,6 @@ import "./App.css";
 import headshot from "./assets/headshot.png";
 import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
-import { CoinbaseLogo } from "./icons/CoinbaseLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
 import { GithubIcon } from "./icons/GithubIcon";
 import { SunIcon } from "./icons/SunIcon";
