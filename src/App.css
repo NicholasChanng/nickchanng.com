@@ -36,7 +36,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--background-color);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .App {
@@ -60,7 +62,10 @@ body {
   width: 100%;
   max-width: 1000px;
   box-sizing: border-box;
-  transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.3s;
 }
 
 header {
@@ -144,7 +149,7 @@ header {
 }
 
 .intro-text {
-  max-width: 450px;
+  max-width: 500px;
   font-size: 1.25rem;
   line-height: 1.6;
   margin: 0;
@@ -180,8 +185,11 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-    background-color 0.3s, border-color 0.3s;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .card:hover {
@@ -588,8 +596,11 @@ main > .section-title:first-of-type {
   border-radius: 18px;
   padding: 1.5rem 2rem;
   margin-top: 1rem;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
-    background-color 0.3s, border-color 0.3s;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out,
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .spotify-song-card:hover {
@@ -634,7 +645,9 @@ main > .section-title:first-of-type {
   box-shadow: 0 2px 8px var(--shadow-color);
   object-fit: cover;
   background: var(--container-bg);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 .spotify-link {

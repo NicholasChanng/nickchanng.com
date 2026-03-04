@@ -3,6 +3,7 @@ import "./App.css";
 import headshot from "./assets/headshot.png";
 import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
+import { CoinbaseLogo } from "./icons/CoinbaseLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
 import { GithubIcon } from "./icons/GithubIcon";
 import { SunIcon } from "./icons/SunIcon";
@@ -279,7 +280,7 @@ function App() {
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
                   <p className="intro-text">
-                    Interested in AI Platforms & Distributed Systems
+                    Interested in AI Platforms, Distributed Systems, & Infra
                   </p>
                 </div>
               </div>
@@ -314,6 +315,25 @@ function App() {
               <div className="section-divider" />
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
+                {/* <ExperienceCard
+                  title="Incoming Software Engineer Intern"
+                  company="Coinbase"
+                  years="Summer 2026"
+                  logo={<CoinbaseLogo />}
+                  link="https://www.coinbase.com"
+                  metaLeft={
+                    <>
+                      <a
+                        href="https://www.coinbase.com/institutional"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="card-meta-link"
+                      >
+                        Institutional
+                      </a>
+                    </>
+                  }
+                /> */}
                 <ExperienceCard
                   title="Software Engineer Intern"
                   company="Amazon"
@@ -374,6 +394,9 @@ function App() {
               </div>
 
               <div className="section-divider" />
+              <SpotifyNowPlaying />
+
+              <div className="section-divider" />
               <h2 className="section-title">Projects</h2>
               <div className="card-gallery project-gallery">
                 <ProjectCard
@@ -425,9 +448,6 @@ function App() {
                   githubLink="https://github.com/rolandyangg/vizAsianHate"
                 />
               </div>
-
-              <div className="section-divider" />
-              <SpotifyNowPlaying />
 
               <div className="section-divider" />
 
