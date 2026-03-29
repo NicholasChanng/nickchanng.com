@@ -9,6 +9,7 @@ import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import SpotifyNowPlaying from "./components/SpotifyNowPlaying";
+import { GoogleLogo } from "./icons/GoogleLogo";
 
 const Card = ({
   title,
@@ -279,7 +280,7 @@ function App() {
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
                   <p className="intro-text">
-                    Interested in AI Platforms, Distributed Systems, & Infra
+                    Interested in Distributed Systems, Infra, & AI Platforms
                   </p>
                 </div>
               </div>
@@ -314,25 +315,25 @@ function App() {
               <div className="section-divider" />
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
-                {/* <ExperienceCard
+                <ExperienceCard
                   title="Incoming Software Engineer Intern"
-                  company="Coinbase"
+                  company="Google"
                   years="Summer 2026"
-                  logo={<CoinbaseLogo />}
-                  link="https://www.coinbase.com"
+                  logo={<GoogleLogo />}
+                  link="https://www.google.com"
                   metaLeft={
                     <>
                       <a
-                        href="https://www.coinbase.com/institutional"
+                        href="https://cloud.google.com/dataplex"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="card-meta-link"
                       >
-                        Institutional
+                        Google Cloud Dataplex
                       </a>
                     </>
                   }
-                /> */}
+                />
                 <ExperienceCard
                   title="Software Engineer Intern"
                   company="Amazon"
