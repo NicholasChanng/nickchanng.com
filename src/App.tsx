@@ -393,9 +393,6 @@ function App() {
               </div>
 
               <div className="section-divider" />
-              <SpotifyNowPlaying />
-
-              <div className="section-divider" />
               <h2 className="section-title">Projects</h2>
               <div className="card-gallery project-gallery">
                 <ProjectCard
@@ -459,8 +456,13 @@ function App() {
 
               <div className="section-divider" />
 
-              <h2 className="section-title">Games I Play</h2>
+              <h2 className="section-title section-title-with-live">
+                <span className="live-indicator">
+                  <span className="live-dot" /> Live
+                </span>
+              </h2>
               <div className="card-gallery games-gallery">
+                <SpotifyNowPlaying />
                 <GameCard
                   game="Valorant"
                   currentRank="Diamond 1"
@@ -474,13 +476,6 @@ function App() {
                   peakRank="Elite"
                   hoursPlayed={473}
                   link="https://fortnitetracker.com/profile/all/Flxming."
-                />
-                <GameCard
-                  game="Marvel Rivals"
-                  currentRank="Unranked"
-                  peakRank="Platinum 1"
-                  hoursPlayed={23}
-                  link="https://tracker.gg/marvel-rivals/profile/ign/FlamingHogs/overview"
                 />
               </div>
             </main>

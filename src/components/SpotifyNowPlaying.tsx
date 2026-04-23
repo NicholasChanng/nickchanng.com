@@ -32,7 +32,6 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
     try {
       setError(null);
 
-      // Step 1: Get access token
       const tokenResponse = await fetch(`${apiUrl}/refresh-token`);
       if (!tokenResponse.ok) {
         throw new Error("Failed to get access token");
@@ -40,7 +39,6 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
 
       const { accessToken } = await tokenResponse.json();
 
-      // Step 2: Fetch recently played tracks
       const spotifyResponse = await fetch(
         "https://api.spotify.com/v1/me/player/recently-played?limit=1",
         {
@@ -64,7 +62,7 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
 
       if (data.items && data.items.length > 0) {
         const trackData = data.items[0].track;
-        const newTrack: SpotifyTrack = {
+        setTrack({
           name: trackData.name,
           artists: trackData.artists.map(
             (artist: SpotifyArtist) => artist.name
@@ -72,9 +70,7 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
           album: trackData.album.name,
           albumImage: trackData.album.images[0]?.url || "",
           externalUrl: trackData.external_urls.spotify,
-        };
-
-        setTrack(newTrack);
+        });
       } else {
         setTrack(null);
       }
@@ -85,7 +81,6 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
       setError(err instanceof Error ? err.message : "Unknown error");
       setIsLoading(false);
 
-      // Don't show error for rate limiting or token issues (will retry)
       if (
         err instanceof Error &&
         (err.message.includes("Rate limited") ||
@@ -96,12 +91,10 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
     }
   }, [apiUrl]);
 
-  // Initial fetch
   useEffect(() => {
     fetchSpotifyData();
   }, [fetchSpotifyData]);
 
-  // Polling every 30 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       fetchSpotifyData();
@@ -110,7 +103,6 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
     return () => clearInterval(interval);
   }, [fetchSpotifyData]);
 
-  // Retry on error after 5 seconds
   useEffect(() => {
     if (
       error &&
@@ -125,110 +117,49 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
     }
   }, [error, fetchSpotifyData]);
 
-  if (isLoading) {
-    return (
-      <section className="spotify-section">
-        <h2 className="section-title spotify-title">
-          Last Played on Spotify <LiveCircleIcon />
-        </h2>
-        <div className="spotify-song-card">
-          <div className="spotify-song-info">
-            <div className="spotify-song-title">Loading...</div>
-            <div className="spotify-song-artists">Fetching Nick's music</div>
-            <div className="spotify-song-album">Please wait</div>
-          </div>
-          <div className="spotify-album-art">
-            <div className="spotify-album-placeholder"></div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const title = isLoading
+    ? "Loading…"
+    : error
+    ? "Unavailable"
+    : track?.name ?? "No recent track";
+  const artist = isLoading
+    ? "Fetching Spotify"
+    : error
+    ? "Retrying…"
+    : track?.artists.join(", ") ?? "—";
 
-  if (
-    error &&
-    !error.includes("Rate limited") &&
-    !error.includes("Token expired")
-  ) {
-    return (
-      <section className="spotify-section">
-        <h2 className="section-title spotify-title">
-          Last Played on Spotify <LiveCircleIcon />
-        </h2>
-        <div className="spotify-song-card error">
-          <div className="spotify-song-info">
-            <div className="spotify-song-title">Unable to load</div>
-            <div className="spotify-song-artists">Spotify data unavailable</div>
-            <div className="spotify-song-album">Retrying...</div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-
-  if (!track) {
-    return (
-      <section className="spotify-section">
-        <h2 className="section-title spotify-title">
-          Last Played on Spotify <LiveCircleIcon />
-        </h2>
-        <div className="spotify-song-card">
-          <div className="spotify-song-info">
-            <div className="spotify-song-title">No recent tracks</div>
-            <div className="spotify-song-artists">
-              Wait for Nick to listen to music
-            </div>
-            <div className="spotify-song-album">Updates every 30 seconds</div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  const body = (
+    <>
+      <div className="spotify-player-art">
+        {track?.albumImage ? (
+          <img src={track.albumImage} alt={`${track.album} album cover`} />
+        ) : (
+          <div className="spotify-player-art-placeholder" />
+        )}
+      </div>
+      <div className="spotify-player-info">
+        <div className="spotify-player-title">{title}</div>
+        <div className="spotify-player-artist">{artist}</div>
+      </div>
+    </>
+  );
 
   return (
-    <section className="spotify-section">
-      <h2 className="section-title spotify-title">
-        Last Played on Spotify <LiveCircleIcon />
-      </h2>
-      <div className="spotify-song-card">
-        <div className="spotify-song-info">
-          <div className="spotify-song-title">{track.name}</div>
-          <div className="spotify-song-artists">{track.artists.join(", ")}</div>
-          <div className="spotify-song-album">{track.album}</div>
-        </div>
-        <div className="spotify-album-art">
-          <a
-            href={track.externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="spotify-link"
-            style={{ position: "relative", display: "inline-block" }}
-          >
-            <img src={track.albumImage} alt={`${track.album} album cover`} />
-            <span className="spotify-play-overlay">
-              <svg
-                width="38"
-                height="38"
-                viewBox="0 0 38 38"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <circle cx="19" cy="19" r="19" fill="rgba(0,0,0,0.45)" />
-                <polygon points="15,11 28,19 15,27" fill="#fff" />
-              </svg>
-            </span>
-          </a>
-        </div>
-      </div>
-    </section>
+    <div className="spotify-player">
+      {track ? (
+        <a
+          href={track.externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="spotify-player-body"
+        >
+          {body}
+        </a>
+      ) : (
+        <div className="spotify-player-body">{body}</div>
+      )}
+    </div>
   );
 };
-
-// Live indicator component (reused from main App)
-const LiveCircleIcon = () => (
-  <span className="live-indicator">
-    <span className="live-dot" /> Live
-  </span>
-);
 
 export default SpotifyNowPlaying;
