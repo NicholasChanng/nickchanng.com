@@ -146,6 +146,7 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
 
   return (
     <div className="spotify-player">
+      <h3 className="spotify-player-heading">Spotify</h3>
       {track ? (
         <a
           href={track.externalUrl}
