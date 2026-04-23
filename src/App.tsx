@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
-import headshot from "./assets/headshot.png";
 import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
 import { GithubIcon } from "./icons/GithubIcon";
+import { LinkedinIcon } from "./icons/LinkedinIcon";
+import { ResumeIcon } from "./icons/ResumeIcon";
 import { SunIcon } from "./icons/SunIcon";
 import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
@@ -44,20 +45,31 @@ const ProjectCard = ({
   description,
   id,
   githubLink,
+  link,
 }: {
   title: string;
   description: string;
   id: string;
   githubLink?: string;
+  link?: string;
 }) => (
   <Card
     title={title}
     footerContent={<span>ID {id}</span>}
     headerSuffix={
-      githubLink ? (
-        <a href={githubLink} target="_blank" rel="noopener noreferrer">
-          <GithubIcon />
-        </a>
+      githubLink || link ? (
+        <div className="project-card-links">
+          {link && (
+            <a href={link} target="_blank" rel="noopener noreferrer">
+              <ExternalLinkIcon />
+            </a>
+          )}
+          {githubLink && (
+            <a href={githubLink} target="_blank" rel="noopener noreferrer">
+              <GithubIcon />
+            </a>
+          )}
+        </div>
       ) : null
     }
   >
@@ -250,21 +262,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* Preload headshot during loader */}
-      {isLoaderVisible && (
-        <img
-          src={headshot}
-          alt=""
-          style={{
-            position: "absolute",
-            left: "-9999px",
-            width: "1px",
-            height: "1px",
-            opacity: 0,
-            pointerEvents: "none",
-          }}
-        />
-      )}
       {isLoaderVisible && (
         <div className={`loader-wrapper ${isFadingOut ? "fade-out" : ""}`}>
           <Loader type="ball-pulse-sync" active />
@@ -275,7 +272,6 @@ function App() {
           <div className="main-container fade-in">
             <header>
               <div className="name-section">
-                <img src={headshot} alt="headshot" className="headshot" />
                 <div className="header-title">
                   <h1>Nicholas Channg</h1>
                   <p className="intro-text">Computer Science @ Cornell</p>
@@ -290,27 +286,30 @@ function App() {
                     href="https://www.linkedin.com/in/nickchanng/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn"
                   >
-                    LinkedIn
+                    <LinkedinIcon />
                   </a>
                   <a
                     href="https://github.com/nicholaschanng"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="GitHub"
                   >
-                    GitHub
+                    <GithubIcon />
                   </a>
                   <a
                     href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Resume"
                   >
-                    Resume
+                    <ResumeIcon />
                   </a>
                 </div>
+                <StatusBar />
               </nav>
             </header>
-            <StatusBar />
             <main>
               <div className="section-divider" />
               <h2 className="section-title">Experience</h2>
@@ -400,11 +399,18 @@ function App() {
               <h2 className="section-title">Projects</h2>
               <div className="card-gallery project-gallery">
                 <ProjectCard
+                  title="Larp N Learn"
+                  description="Best Game Award @ HackPrinceton Spring '26"
+                  id="008"
+                  githubLink="https://github.com/NicholasChanng/larpnlearn"
+                  link="https://devpost.com/software/larp-wmveqg"
+                />
+                {/* <ProjectCard
                   title="nickchanng.com"
                   description="Personal Website"
                   id="008"
                   githubLink="https://github.com/NicholasChanng/nickchanng.com"
-                />
+                /> */}
                 <ProjectCard
                   title="TripTune"
                   description="NLP Vacation Planner"
@@ -434,6 +440,7 @@ function App() {
                   description="1st Place @ Cornell Digital Agriculture Hackathon"
                   id="003"
                   githubLink="https://github.com/NicholasChanng/prakriti"
+                  link="https://news.cornell.edu/stories/2024/02/freshmen-win-top-prize-digital-ag-hackathon"
                 />
                 <ProjectCard
                   title="Sky Taekwondo"
@@ -446,6 +453,7 @@ function App() {
                   description="Interactivity Award & Top 12 @ Vizathon 2021"
                   id="001"
                   githubLink="https://github.com/rolandyangg/vizAsianHate"
+                  link="https://devpost.com/software/stop-aapi-hate-dashboard"
                 />
               </div>
 
@@ -455,9 +463,9 @@ function App() {
               <div className="card-gallery games-gallery">
                 <GameCard
                   game="Valorant"
-                  currentRank="Ascendant 1"
+                  currentRank="Diamond 1"
                   peakRank="Immortal 3, #3,825"
-                  hoursPlayed={873}
+                  hoursPlayed={884}
                   link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
                 />
                 <GameCard

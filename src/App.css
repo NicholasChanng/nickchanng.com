@@ -71,7 +71,7 @@ body {
 header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .header-title h1 {
@@ -126,26 +126,29 @@ header {
 
 .header-nav {
   display: flex;
-  gap: 3rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
 }
 
 .nav-section {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin: 12.5px 0;
 }
 
-.nav-section a,
-.social-links a {
-  text-decoration: none;
+.nav-section a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-color);
-  font-weight: 500;
-  font-size: 0.95rem;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.nav-section a:hover,
-.social-links a:hover {
-  text-decoration: underline;
+.nav-section a:hover {
+  opacity: 0.65;
 }
 
 .intro-text {
@@ -159,7 +162,6 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-top: 1rem;
   font-size: 0.9rem;
   color: var(--subtle-text-color);
 }
@@ -174,6 +176,10 @@ header {
 .project-gallery {
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+.project-gallery .card p {
+  margin: 0.25rem 0;
 }
 
 .card {
@@ -245,6 +251,24 @@ header {
   font-size: 0.95rem;
   font-weight: 500;
   text-align: right;
+}
+
+.project-card-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.project-card-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+}
+
+.project-card-links .external-link-icon {
+  margin-left: 0;
+  display: block;
 }
 
 /* Portfolio Layout Styles */
@@ -460,8 +484,12 @@ main > .section-title:first-of-type {
 
   header {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
     gap: 1.5rem;
+  }
+
+  .header-nav {
+    width: 100%;
   }
 
   .header-title h1 {
