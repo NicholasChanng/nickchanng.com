@@ -130,12 +130,19 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
 
   const body = (
     <>
-      <div className="spotify-player-art">
-        {track?.albumImage ? (
-          <img src={track.albumImage} alt={`${track.album} album cover`} />
-        ) : (
-          <div className="spotify-player-art-placeholder" />
-        )}
+      <div className="spotify-player-turntable">
+        <div className="spotify-player-art">
+          {track?.albumImage ? (
+            <img src={track.albumImage} alt={`${track.album} album cover`} />
+          ) : (
+            <div className="spotify-player-art-placeholder" />
+          )}
+        </div>
+        <div className="spotify-player-stylus" aria-hidden="true">
+          <span className="spotify-player-stylus-pivot" />
+          <span className="spotify-player-stylus-arm" />
+          <span className="spotify-player-stylus-head" />
+        </div>
       </div>
       <div className="spotify-player-info">
         <div className="spotify-player-title">{title}</div>

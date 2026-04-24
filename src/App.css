@@ -684,59 +684,55 @@ main > .section-title:first-of-type {
   transition: background-color 0.2s ease-in-out;
 }
 
-.spotify-player-art {
+.spotify-player-turntable {
   position: relative;
   width: 50%;
   aspect-ratio: 1 / 1;
   margin: 0.5rem auto;
+}
+
+.spotify-player-art {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 50%;
-  background: var(--card-bg);
+  background:
+    repeating-radial-gradient(circle at center, #0a0a0a 0 1px, #2e2e2e 1px 3px),
+    #000;
   box-shadow:
     0 4px 14px var(--shadow-color),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
   animation: record-spin 8s linear infinite;
 }
 
-.spotify-player-art::after {
-  content: "";
+.spotify-player-art img {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 35.5%;
   height: 35.5%;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at center, #ffffff 0 8%, transparent 8.5%),
-    repeating-radial-gradient(circle at center, #0d0d0d 0 1px, #1a1a1a 1px 3px),
-    #000;
+  object-fit: cover;
+  display: block;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 1;
   box-shadow:
     0 0 0 2px rgba(0, 0, 0, 0.5),
     inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
-.spotify-player-art img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-}
-
 .spotify-player-art-placeholder {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  width: 35.5%;
+  height: 35.5%;
   background: var(--card-bg);
   border: 1.5px dashed var(--card-border);
   box-sizing: border-box;
   border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 @keyframes record-spin {
@@ -746,6 +742,74 @@ main > .section-title:first-of-type {
   to {
     transform: rotate(360deg);
   }
+}
+
+.spotify-player-stylus {
+  position: absolute;
+  top: 0;
+  right: -10%;
+  width: 10%;
+  height: 10%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.spotify-player-stylus-pivot {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #d9d9dd, #6e6e74);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+  z-index: 2;
+}
+
+.spotify-player-stylus-arm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 480%;
+  background: linear-gradient(90deg, #8a8a90, #cfcfd4, #8a8a90);
+  border-radius: 2px;
+  transform-origin: top center;
+  transform: translate(-50%, 0) rotate(22deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.spotify-player-stylus-arm::before {
+  content: "";
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  width: 100%;
+  height: 22%;
+  background: linear-gradient(90deg, #8a8a90, #cfcfd4, #8a8a90);
+  border-radius: 2px;
+  transform-origin: top center;
+  transform: translateX(-50%) rotate(40deg);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-player-stylus-arm::after {
+  content: "";
+  position: absolute;
+  top: 110%;
+  left: -325%;
+  width: 260%;
+  height: 12%;
+  background: linear-gradient(145deg, #cfcfd4, #8a8a90);
+  border-radius: 2px;
+  transform: rotate(40deg);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.spotify-player-stylus-head {
+  display: none;
 }
 
 .spotify-player-info {
