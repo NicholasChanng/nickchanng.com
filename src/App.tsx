@@ -323,12 +323,12 @@ function App() {
                   metaLeft={
                     <>
                       <a
-                        href="https://cloud.google.com/dataplex"
+                        href="https://cloud.google.com/products/knowledge-catalog"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="card-meta-link"
                       >
-                        Google Cloud Dataplex
+                        Google Cloud Knowledge Catalog
                       </a>
                     </>
                   }
