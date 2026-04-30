@@ -3,6 +3,7 @@ import "./App.css";
 import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
+import { DevpostIcon } from "./icons/DevpostIcon";
 import { GithubIcon } from "./icons/GithubIcon";
 import { LinkedinIcon } from "./icons/LinkedinIcon";
 import { ResumeIcon } from "./icons/ResumeIcon";
@@ -297,6 +298,14 @@ function App() {
                     aria-label="GitHub"
                   >
                     <GithubIcon />
+                  </a>
+                  <a
+                    href="https://devpost.com/NicholasChanng"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Devpost"
+                  >
+                    <DevpostIcon />
                   </a>
                   <a
                     href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
