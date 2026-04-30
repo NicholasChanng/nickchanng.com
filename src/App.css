@@ -705,6 +705,10 @@ main > .section-title:first-of-type {
   animation: record-spin 8s linear infinite;
 }
 
+.spotify-player-art.is-paused {
+  animation-play-state: paused;
+}
+
 .spotify-player-art img {
   position: absolute;
   top: 50%;

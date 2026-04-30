@@ -131,7 +131,11 @@ const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
   const body = (
     <>
       <div className="spotify-player-turntable">
-        <div className="spotify-player-art">
+        <div
+          className={`spotify-player-art${
+            isLoading || !track ? " is-paused" : ""
+          }`}
+        >
           {track?.albumImage ? (
             <img src={track.albumImage} alt={`${track.album} album cover`} />
           ) : (
