@@ -424,7 +424,7 @@ function App() {
                   title="MathGPT"
                   description="AI Math Tutor Chrome Extension"
                   id="005"
-                  githubLink="https://chromewebstore.google.com/search/mathgpt"
+                  link="https://chromewebstore.google.com/search/mathgpt"
                 />
                 <ProjectCard
                   title="OCaml Casino"
