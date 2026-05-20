@@ -200,7 +200,7 @@ const StatusBar = () => {
     minute: "2-digit",
     second: "2-digit",
     hour12: true,
-    timeZone: "America/New_York",
+    timeZone: "America/Los_Angeles",
   });
 
   return (
@@ -213,8 +213,8 @@ const StatusBar = () => {
           gap: "0.25rem",
         }}
       >
-        <span>Ithaca, NY</span>
-        <span>{formattedTime} EST</span>
+        <span>Sunnyvale, CA</span>
+        <span>{formattedTime} PST</span>
       </div>
     </div>
   );
@@ -324,9 +324,9 @@ function App() {
               <h2 className="section-title">Experience</h2>
               <div className="card-gallery">
                 <ExperienceCard
-                  title="Incoming Software Engineer Intern"
+                  title="Software Engineer Intern"
                   company="Google"
-                  years="Summer 2026"
+                  years="May 2026-Present"
                   logo={<GoogleLogo />}
                   link="https://www.google.com"
                   metaLeft={
