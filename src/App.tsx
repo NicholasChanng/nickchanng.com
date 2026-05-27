@@ -390,7 +390,7 @@ function App() {
                   degree="B.A. Computer Science"
                   years="2023-2027"
                   link="https://www.cornell.edu"
-                  metaLeft="GPA: 3.72"
+                  metaLeft="GPA: 3.7"
                 />
                 <EducationCard
                   school="Bridgewater-Raritan High School"
