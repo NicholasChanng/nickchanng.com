@@ -337,7 +337,7 @@ function App() {
                         rel="noopener noreferrer"
                         className="card-meta-link"
                       >
-                        Cloud Knowledge Catalog Insights
+                        Cloud Knowledge Catalog
                       </a>
                     </>
                   }
