@@ -236,14 +236,11 @@ header {
   font-weight: 500;
 }
 
-/* Card meta link styles */
+/* Card meta link styles. No hover treatment: the whole card already links to
+   the same destination, so highlighting it separately is noise. */
 .card-meta-link {
   color: inherit;
   text-decoration: none;
-}
-
-.card-meta-link:hover {
-  text-decoration: underline;
 }
 
 .card-meta-right {
@@ -403,6 +400,45 @@ main > .section-title:first-of-type {
   height: 1px;
   background-color: var(--container-border);
   margin: 2rem 0;
+}
+
+/* Whole-card link: a transparent overlay covering the card. Purely a hit
+   target, so the card looks exactly the same as before. */
+.card-clickable {
+  position: relative;
+}
+
+.card-link-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  text-decoration: none !important;
+}
+
+/* Links with their own destination stay above the overlay so they still win
+   the click. Everything else stays unpositioned and reads through it. */
+.card-clickable .card-header a:not(.card-link-overlay),
+.card-clickable .card-title-link,
+.card-clickable .card-meta-link,
+.card-clickable .project-card-links a {
+  position: relative;
+  z-index: 1;
+}
+
+/* The company name links to the company site. Underlined so it reads as
+   clickable and distinct from the card's own link. */
+/* Company name links out, styled exactly like .card-meta-link: plain heading
+   text that underlines on hover. Selector outspecifies
+   `.card-header a { text-decoration: none !important }` above. */
+.card-header a.card-title-link {
+  color: inherit;
+  font: inherit;
+  text-decoration: none !important;
+}
+
+.card-header a.card-title-link:hover {
+  text-decoration: underline !important;
 }
 
 .card-header {

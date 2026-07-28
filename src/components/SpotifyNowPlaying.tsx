@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 interface SpotifyTrack {
   name: string;
@@ -6,125 +6,82 @@ interface SpotifyTrack {
   album: string;
   albumImage: string;
   externalUrl: string;
-}
-
-interface SpotifyArtist {
-  name: string;
-  external_urls: { spotify: string };
-  href: string;
-  id: string;
-  type: string;
-  uri: string;
+  isPlaying?: boolean;
+  playedAt?: string;
 }
 
 interface SpotifyNowPlayingProps {
   apiUrl?: string;
 }
 
+const POLL_MS = 30000;
+const MAX_RETRY_MS = 120000;
+
 const SpotifyNowPlaying: React.FC<SpotifyNowPlayingProps> = ({
-  apiUrl = "https://nickchanng-com-backend.onrender.com",
+  apiUrl = import.meta.env.VITE_API_URL ??
+    "https://nickchanng-com-backend.onrender.com",
 }) => {
   const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [hasError, setHasError] = useState(false);
+  const failuresRef = useRef(0);
 
-  const fetchSpotifyData = useCallback(async () => {
+  const fetchNowPlaying = useCallback(async () => {
     try {
-      setError(null);
+      const response = await fetch(`${apiUrl}/now-playing`);
 
-      const tokenResponse = await fetch(`${apiUrl}/refresh-token`);
-      if (!tokenResponse.ok) {
-        throw new Error("Failed to get access token");
+      if (!response.ok) {
+        throw new Error(`Backend error: ${response.status}`);
       }
 
-      const { accessToken } = await tokenResponse.json();
+      // Backend returns null when there is nothing to show
+      const data: SpotifyTrack | null = await response.json();
 
-      const spotifyResponse = await fetch(
-        "https://api.spotify.com/v1/me/player/recently-played?limit=1",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
-
-      if (!spotifyResponse.ok) {
-        if (spotifyResponse.status === 401) {
-          throw new Error("Token expired, will retry");
-        }
-        if (spotifyResponse.status === 429) {
-          throw new Error("Rate limited, will retry later");
-        }
-        throw new Error(`Spotify API error: ${spotifyResponse.status}`);
-      }
-
-      const data = await spotifyResponse.json();
-
-      if (data.items && data.items.length > 0) {
-        const trackData = data.items[0].track;
-        setTrack({
-          name: trackData.name,
-          artists: trackData.artists.map(
-            (artist: SpotifyArtist) => artist.name
-          ),
-          album: trackData.album.name,
-          albumImage: trackData.album.images[0]?.url || "",
-          externalUrl: trackData.external_urls.spotify,
-        });
-      } else {
-        setTrack(null);
-      }
-
-      setIsLoading(false);
+      failuresRef.current = 0;
+      setTrack(data && data.name ? data : null);
+      setHasError(false);
     } catch (err) {
       console.error("Spotify fetch error:", err);
-      setError(err instanceof Error ? err.message : "Unknown error");
+      failuresRef.current += 1;
+      setHasError(true);
+    } finally {
       setIsLoading(false);
-
-      if (
-        err instanceof Error &&
-        (err.message.includes("Rate limited") ||
-          err.message.includes("Token expired"))
-      ) {
-        setError(null);
-      }
     }
   }, [apiUrl]);
 
+  // Poll on a normal cadence, backing off while the backend is unhappy.
   useEffect(() => {
-    fetchSpotifyData();
-  }, [fetchSpotifyData]);
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      fetchSpotifyData();
-    }, 30000);
+    const run = async () => {
+      await fetchNowPlaying();
+      if (cancelled) return;
 
-    return () => clearInterval(interval);
-  }, [fetchSpotifyData]);
+      const delay =
+        failuresRef.current > 0
+          ? Math.min(POLL_MS * 2 ** (failuresRef.current - 1), MAX_RETRY_MS)
+          : POLL_MS;
 
-  useEffect(() => {
-    if (
-      error &&
-      !error.includes("Rate limited") &&
-      !error.includes("Token expired")
-    ) {
-      const timeout = setTimeout(() => {
-        fetchSpotifyData();
-      }, 5000);
+      timer = setTimeout(run, delay);
+    };
 
-      return () => clearTimeout(timeout);
-    }
-  }, [error, fetchSpotifyData]);
+    run();
+
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [fetchNowPlaying]);
 
   const title = isLoading
     ? "Loading…"
-    : error
+    : hasError
     ? "Unavailable"
     : track?.name ?? "No recent track";
   const artist = isLoading
     ? "Fetching Spotify"
-    : error
+    : hasError
     ? "Retrying…"
     : track?.artists.join(", ") ?? "—";
 

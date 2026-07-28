@@ -19,19 +19,45 @@ const Card = ({
   footerContent,
   headerPrefix,
   headerSuffix,
+  cardLink,
+  titleLink,
 }: {
   title: string;
   children: React.ReactNode;
   footerContent: React.ReactNode;
   headerPrefix?: React.ReactNode;
   headerSuffix?: React.ReactNode;
+  cardLink?: string;
+  titleLink?: string;
 }) => (
-  <div className="card">
+  <div className={`card${cardLink ? " card-clickable" : ""}`}>
+    {/* Transparent overlay makes the whole card a link. Real links inside the
+        card sit above it via z-index, so they keep their own destinations. */}
+    {cardLink && (
+      <a
+        className="card-link-overlay"
+        href={cardLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={title}
+      />
+    )}
     <div>
       <div className="card-header">
         <h3>
           {headerPrefix}
-          <span>{title}</span>
+          {titleLink ? (
+            <a
+              className="card-title-link"
+              href={titleLink}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {title}
+            </a>
+          ) : (
+            <span>{title}</span>
+          )}
         </h3>
         {headerSuffix}
       </div>
@@ -56,6 +82,8 @@ const ProjectCard = ({
 }) => (
   <Card
     title={title}
+    // Arrow link wins; fall back to GitHub when it's the only link.
+    cardLink={link ?? githubLink}
     footerContent={<span>ID {id}</span>}
     headerSuffix={
       githubLink || link ? (
@@ -84,17 +112,23 @@ const ExperienceCard = ({
   years,
   logo,
   link,
+  companyLink,
   metaLeft,
 }: {
   title: string;
   company: string;
   years: string;
   logo?: React.ReactNode;
+  /** Team/product site — the arrow icon and the card itself point here. */
   link?: string;
+  /** Company site — reachable from the company name in the header. */
+  companyLink?: string;
   metaLeft?: React.ReactNode;
 }) => (
   <Card
     title={company}
+    cardLink={link}
+    titleLink={companyLink}
     footerContent={
       <div className="card-footer-row">
         <span className="card-meta-left">{metaLeft}</span>
@@ -129,6 +163,7 @@ const EducationCard = ({
 }) => (
   <Card
     title={school}
+    cardLink={link}
     footerContent={
       <div className="card-footer-row">
         <span className="card-meta-left">{metaLeft}</span>
@@ -164,7 +199,16 @@ const GameCard = ({
   hoursPlayed: number;
   link?: string;
 }) => (
-  <div className="card game-card">
+  <div className={`card game-card${link ? " card-clickable" : ""}`}>
+    {link && (
+      <a
+        className="card-link-overlay"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={game}
+      />
+    )}
     <div className="card-header">
       <h3>{game}</h3>
       {link && (
@@ -328,7 +372,8 @@ function App() {
                   company="Google"
                   years="May 2026-Present"
                   logo={<GoogleLogo />}
-                  link="https://www.google.com"
+                  link="https://cloud.google.com/products/knowledge-catalog"
+                  companyLink="https://www.google.com"
                   metaLeft={
                     <>
                       <a
@@ -347,7 +392,8 @@ function App() {
                   company="Amazon"
                   years="Sep 2025-Dec 2025"
                   logo={<AmazonLogo />}
-                  link="https://www.amazon.com"
+                  link="https://advertising.amazon.com/library/guides/sponsored-products-video"
+                  companyLink="https://www.amazon.com"
                   metaLeft={
                     <>
                       <a
@@ -366,7 +412,8 @@ function App() {
                   company="Tesla"
                   years="May 2025-Sep 2025"
                   logo={<TeslaLogo />}
-                  link="https://www.tesla.com"
+                  link="https://apps.apple.com/us/app/tesla/id582007913"
+                  companyLink="https://www.tesla.com"
                   metaLeft={
                     <>
                       <a
