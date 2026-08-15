@@ -239,13 +239,20 @@ const StatusBar = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const timeZone = "America/New_York";
+
   const formattedTime = time.toLocaleTimeString("en-US", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
     hour12: true,
-    timeZone: "America/Los_Angeles",
+    timeZone,
   });
+
+  const timeZoneLabel =
+    new Intl.DateTimeFormat("en-US", { timeZone, timeZoneName: "short" })
+      .formatToParts(time)
+      .find((part) => part.type === "timeZoneName")?.value ?? "";
 
   return (
     <div className="status-bar">
@@ -257,8 +264,10 @@ const StatusBar = () => {
           gap: "0.25rem",
         }}
       >
-        <span>Sunnyvale, CA</span>
-        <span>{formattedTime} PST</span>
+        <span>Ithaca, NY</span>
+        <span>
+          {formattedTime} {timeZoneLabel}
+        </span>
       </div>
     </div>
   );
@@ -370,7 +379,7 @@ function App() {
                 <ExperienceCard
                   title="Software Engineer Intern"
                   company="Google"
-                  years="May 2026-Present"
+                  years="May 2026-Aug 2026"
                   logo={<GoogleLogo />}
                   link="https://cloud.google.com/products/knowledge-catalog"
                   companyLink="https://www.google.com"
