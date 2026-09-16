@@ -444,7 +444,7 @@ function App() {
                 <EducationCard
                   school="Cornell University"
                   degree="B.A. Computer Science"
-                  years="2023-2027"
+                  years="2023-2026"
                   link="https://www.cornell.edu"
                   metaLeft="GPA: 3.7"
                 />
