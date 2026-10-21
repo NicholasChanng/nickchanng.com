@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Loader from "react-loaders";
 import { AmazonLogo } from "./icons/AmazonLogo";
 import { TeslaLogo } from "./icons/TeslaLogo";
 import { DevpostIcon } from "./icons/DevpostIcon";
@@ -292,8 +291,6 @@ function setCookie(name: string, value: string, days = 365) {
 }
 
 function App() {
-  const [isLoaderVisible, setLoaderVisible] = React.useState(true);
-  const [isFadingOut, setFadingOut] = React.useState(false);
   const [theme, setTheme] = React.useState(() => getCookie("theme") || "light");
 
   React.useEffect(() => {
@@ -301,259 +298,243 @@ function App() {
     setCookie("theme", theme);
   }, [theme]);
 
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setFadingOut(true);
-      setTimeout(() => setLoaderVisible(false), 500);
-    }, 1500);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   const toggleTheme = () => {
     setTheme((prev: string) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <div className="App">
-      {isLoaderVisible && (
-        <div className={`loader-wrapper ${isFadingOut ? "fade-out" : ""}`}>
-          <Loader type="ball-pulse-sync" active />
-        </div>
-      )}
-      {!isLoaderVisible && (
-        <>
-          <div className="main-container fade-in">
-            <header>
-              <div className="name-section">
-                <div className="header-title">
-                  <h1>Nicholas Channg</h1>
-                  <p className="intro-text">Computer Science @ Cornell</p>
-                  <p className="intro-text">
-                    Interested in Distributed Systems, Infra, & AI Platforms
-                  </p>
-                </div>
+      <>
+        <div className="main-container fade-in">
+          <header>
+            <div className="name-section">
+              <div className="header-title">
+                <h1>Nicholas Channg</h1>
+                <p className="intro-text">Computer Science @ Cornell</p>
+                <p className="intro-text">
+                  Interested in Distributed Systems, Infra, & AI Platforms
+                </p>
               </div>
-              <nav className="header-nav">
-                <div className="nav-section">
-                  <a
-                    href="https://www.linkedin.com/in/nickchanng/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="LinkedIn"
-                  >
-                    <LinkedinIcon />
-                  </a>
-                  <a
-                    href="https://github.com/nicholaschanng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="GitHub"
-                  >
-                    <GithubIcon />
-                  </a>
-                  <a
-                    href="https://devpost.com/NicholasChanng"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Devpost"
-                  >
-                    <DevpostIcon />
-                  </a>
-                  <a
-                    href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Resume"
-                  >
-                    <ResumeIcon />
-                  </a>
-                </div>
-                <StatusBar />
-              </nav>
-            </header>
-            <main>
-              <div className="section-divider" />
-              <h2 className="section-title">Experience</h2>
-              <div className="card-gallery">
-                <ExperienceCard
-                  title="Software Engineer Intern"
-                  company="Google"
-                  years="May 2026-Aug 2026"
-                  logo={<GoogleLogo />}
-                  link="https://cloud.google.com/products/knowledge-catalog"
-                  companyLink="https://www.google.com"
-                  metaLeft={
-                    <>
-                      <a
-                        href="https://cloud.google.com/products/knowledge-catalog"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="card-meta-link"
-                      >
-                        Cloud Knowledge Catalog
-                      </a>
-                    </>
-                  }
-                />
-                <ExperienceCard
-                  title="Software Engineer Intern"
-                  company="Amazon"
-                  years="Sep 2025-Dec 2025"
-                  logo={<AmazonLogo />}
-                  link="https://advertising.amazon.com/library/guides/sponsored-products-video"
-                  companyLink="https://www.amazon.com"
-                  metaLeft={
-                    <>
-                      <a
-                        href="https://advertising.amazon.com/library/guides/sponsored-products-video"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="card-meta-link"
-                      >
-                        Sponsored Products Video
-                      </a>
-                    </>
-                  }
-                />
-                <ExperienceCard
-                  title="Software Engineer Intern"
-                  company="Tesla"
-                  years="May 2025-Sep 2025"
-                  logo={<TeslaLogo />}
-                  link="https://apps.apple.com/us/app/tesla/id582007913"
-                  companyLink="https://www.tesla.com"
-                  metaLeft={
-                    <>
-                      <a
-                        href="https://apps.apple.com/us/app/tesla/id582007913"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="card-meta-link"
-                      >
-                        Charging Team
-                      </a>
-                    </>
-                  }
-                />
+            </div>
+            <nav className="header-nav">
+              <div className="nav-section">
+                <a
+                  href="https://www.linkedin.com/in/nickchanng/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <LinkedinIcon />
+                </a>
+                <a
+                  href="https://github.com/nicholaschanng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <GithubIcon />
+                </a>
+                <a
+                  href="https://devpost.com/NicholasChanng"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Devpost"
+                >
+                  <DevpostIcon />
+                </a>
+                <a
+                  href="https://github.com/NicholasChanng/resume/blob/main/Nicholas_Channg_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Resume"
+                >
+                  <ResumeIcon />
+                </a>
               </div>
+              <StatusBar />
+            </nav>
+          </header>
+          <main>
+            <div className="section-divider" />
+            <h2 className="section-title">Experience</h2>
+            <div className="card-gallery">
+              <ExperienceCard
+                title="Software Engineer Intern"
+                company="Google"
+                years="May 2026-Aug 2026"
+                logo={<GoogleLogo />}
+                link="https://cloud.google.com/products/knowledge-catalog"
+                companyLink="https://www.google.com"
+                metaLeft={
+                  <>
+                    <a
+                      href="https://cloud.google.com/products/knowledge-catalog"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-meta-link"
+                    >
+                      Cloud Knowledge Catalog
+                    </a>
+                  </>
+                }
+              />
+              <ExperienceCard
+                title="Software Engineer Intern"
+                company="Amazon"
+                years="Sep 2025-Dec 2025"
+                logo={<AmazonLogo />}
+                link="https://advertising.amazon.com/library/guides/sponsored-products-video"
+                companyLink="https://www.amazon.com"
+                metaLeft={
+                  <>
+                    <a
+                      href="https://advertising.amazon.com/library/guides/sponsored-products-video"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-meta-link"
+                    >
+                      Sponsored Products Video
+                    </a>
+                  </>
+                }
+              />
+              <ExperienceCard
+                title="Software Engineer Intern"
+                company="Tesla"
+                years="May 2025-Sep 2025"
+                logo={<TeslaLogo />}
+                link="https://apps.apple.com/us/app/tesla/id582007913"
+                companyLink="https://www.tesla.com"
+                metaLeft={
+                  <>
+                    <a
+                      href="https://apps.apple.com/us/app/tesla/id582007913"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-meta-link"
+                    >
+                      Charging Team
+                    </a>
+                  </>
+                }
+              />
+            </div>
 
-              <div className="section-divider" />
-              <h2 className="section-title">Education</h2>
-              <div className="card-gallery">
-                <EducationCard
-                  school="Cornell University"
-                  degree="B.A. Computer Science"
-                  years="2023-2026"
-                  link="https://www.cornell.edu"
-                  metaLeft="GPA: 3.7"
-                />
-                <EducationCard
-                  school="Bridgewater-Raritan High School"
-                  degree="High School Diploma"
-                  years="2019-2023"
-                  link="https://hs.brrsd.org/"
-                  metaLeft="GPA: 4.7"
-                />
-              </div>
+            <div className="section-divider" />
+            <h2 className="section-title">Education</h2>
+            <div className="card-gallery">
+              <EducationCard
+                school="Cornell University"
+                degree="B.A. Computer Science"
+                years="2023-2026"
+                link="https://www.cornell.edu"
+                metaLeft="GPA: 3.7"
+              />
+              <EducationCard
+                school="Bridgewater-Raritan High School"
+                degree="High School Diploma"
+                years="2019-2023"
+                link="https://hs.brrsd.org/"
+                metaLeft="GPA: 4.7"
+              />
+            </div>
 
-              <div className="section-divider" />
-              <h2 className="section-title">Projects</h2>
-              <div className="card-gallery project-gallery">
-                <ProjectCard
-                  title="Larp N Learn"
-                  description="Best Game Award @ HackPrinceton Spring '26"
-                  id="008"
-                  githubLink="https://github.com/NicholasChanng/larpnlearn"
-                  link="https://devpost.com/software/larp-wmveqg"
-                />
-                {/* <ProjectCard
+            <div className="section-divider" />
+            <h2 className="section-title">Projects</h2>
+            <div className="card-gallery project-gallery">
+              <ProjectCard
+                title="Larp N Learn"
+                description="Best Game Award @ HackPrinceton Spring '26"
+                id="008"
+                githubLink="https://github.com/NicholasChanng/larpnlearn"
+                link="https://devpost.com/software/larp-wmveqg"
+              />
+              {/* <ProjectCard
                   title="nickchanng.com"
                   description="Personal Website"
                   id="008"
                   githubLink="https://github.com/NicholasChanng/nickchanng.com"
                 /> */}
-                <ProjectCard
-                  title="TripTune"
-                  description="NLP Vacation Planner"
-                  id="007"
-                  githubLink="https://github.com/nfq2/4300-final-project"
-                />
-                <ProjectCard
-                  title="ElectAI"
-                  description="ML Voter Turnout Model"
-                  id="006"
-                  githubLink="https://github.com/NicholasChanng/ElectAI"
-                />
-                <ProjectCard
-                  title="MathGPT"
-                  description="AI Math Tutor Chrome Extension"
-                  id="005"
-                  link="https://chromewebstore.google.com/search/mathgpt"
-                />
-                <ProjectCard
-                  title="OCaml Casino"
-                  description="CS 3110 Final Project"
-                  id="004"
-                  githubLink="https://github.com/NicholasChanng/cs3110-final-project"
-                />
-                <ProjectCard
-                  title="Prakriti"
-                  description="1st Place @ Cornell Digital Agriculture Hackathon"
-                  id="003"
-                  githubLink="https://github.com/NicholasChanng/prakriti"
-                  link="https://news.cornell.edu/stories/2024/02/freshmen-win-top-prize-digital-ag-hackathon"
-                />
-                <ProjectCard
-                  title="Sky Taekwondo"
-                  description="Storefront for Sky TKD"
-                  id="002"
-                  githubLink="https://github.com/NicholasChanng/sky-taekwondo-website"
-                />
-                <ProjectCard
-                  title="vizAsianHate"
-                  description="Interactivity Award & Top 12 @ Vizathon 2021"
-                  id="001"
-                  githubLink="https://github.com/rolandyangg/vizAsianHate"
-                  link="https://devpost.com/software/stop-aapi-hate-dashboard"
-                />
-              </div>
+              <ProjectCard
+                title="TripTune"
+                description="NLP Vacation Planner"
+                id="007"
+                githubLink="https://github.com/nfq2/4300-final-project"
+              />
+              <ProjectCard
+                title="ElectAI"
+                description="ML Voter Turnout Model"
+                id="006"
+                githubLink="https://github.com/NicholasChanng/ElectAI"
+              />
+              <ProjectCard
+                title="MathGPT"
+                description="AI Math Tutor Chrome Extension"
+                id="005"
+                link="https://chromewebstore.google.com/search/mathgpt"
+              />
+              <ProjectCard
+                title="OCaml Casino"
+                description="CS 3110 Final Project"
+                id="004"
+                githubLink="https://github.com/NicholasChanng/cs3110-final-project"
+              />
+              <ProjectCard
+                title="Prakriti"
+                description="1st Place @ Cornell Digital Agriculture Hackathon"
+                id="003"
+                githubLink="https://github.com/NicholasChanng/prakriti"
+                link="https://news.cornell.edu/stories/2024/02/freshmen-win-top-prize-digital-ag-hackathon"
+              />
+              <ProjectCard
+                title="Sky Taekwondo"
+                description="Storefront for Sky TKD"
+                id="002"
+                githubLink="https://github.com/NicholasChanng/sky-taekwondo-website"
+              />
+              <ProjectCard
+                title="vizAsianHate"
+                description="Interactivity Award & Top 12 @ Vizathon 2021"
+                id="001"
+                githubLink="https://github.com/rolandyangg/vizAsianHate"
+                link="https://devpost.com/software/stop-aapi-hate-dashboard"
+              />
+            </div>
 
-              <div className="section-divider" />
+            <div className="section-divider" />
 
-              <h2 className="section-title section-title-with-live">
-                <span className="live-indicator">
-                  <span className="live-dot" /> Live
-                </span>
-              </h2>
-              <div className="card-gallery games-gallery">
-                <SpotifyNowPlaying />
-                <GameCard
-                  game="Valorant"
-                  currentRank="Diamond 1"
-                  peakRank="Immortal 3, #3,825"
-                  hoursPlayed={884}
-                  link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
-                />
-                <GameCard
-                  game="Fortnite"
-                  currentRank="Unranked"
-                  peakRank="Elite"
-                  hoursPlayed={473}
-                  link="https://fortnitetracker.com/profile/all/Flxming."
-                />
-              </div>
-            </main>
-            <footer className="main-footer">
-              <span>&copy; {new Date().getFullYear()}</span>
-              <span>made by Nick</span>
-            </footer>
-          </div>
-          <button onClick={toggleTheme} className="theme-toggle-button">
-            {theme === "light" ? <MoonIcon /> : <SunIcon />}
-          </button>
-        </>
-      )}
+            <h2 className="section-title section-title-with-live">
+              <span className="live-indicator">
+                <span className="live-dot" /> Live
+              </span>
+            </h2>
+            <div className="card-gallery games-gallery">
+              <SpotifyNowPlaying />
+              <GameCard
+                game="Valorant"
+                currentRank="Diamond 1"
+                peakRank="Immortal 3, #3,825"
+                hoursPlayed={884}
+                link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
+              />
+              <GameCard
+                game="Fortnite"
+                currentRank="Unranked"
+                peakRank="Elite"
+                hoursPlayed={473}
+                link="https://fortnitetracker.com/profile/all/Flxming."
+              />
+            </div>
+          </main>
+          <footer className="main-footer">
+            <span>&copy; {new Date().getFullYear()}</span>
+            <span>made by Nick</span>
+          </footer>
+        </div>
+        <button onClick={toggleTheme} className="theme-toggle-button">
+          {theme === "light" ? <MoonIcon /> : <SunIcon />}
+        </button>
+      </>
     </div>
   );
 }
