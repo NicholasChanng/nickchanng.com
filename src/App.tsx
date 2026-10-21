@@ -334,6 +334,7 @@ function App() {
         glowRadius={140}
         glowIntensity={0.5}
         holdToZoom={false}
+        intro={false}
         style={{
           position: "fixed",
           inset: 0,
@@ -356,7 +357,7 @@ function App() {
                     speed={60}
                     maxIterations={10}
                     hoverRadius={100}
-                    scrambleColor="#2bb673"
+                    scrambleColor="#8e8e93"
                     loop
                     loopDelay={10000}
                     useOriginalCharsOnly={false}
