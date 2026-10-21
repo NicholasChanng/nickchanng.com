@@ -11,6 +11,9 @@ import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import SpotifyNowPlaying from "./components/SpotifyNowPlaying";
 import { GoogleLogo } from "./icons/GoogleLogo";
+import { GoogleCloudLogo } from "./icons/GoogleCloudLogo";
+import DecryptedText from "./components/DecryptedText";
+import DotField from "./components/DotField";
 
 const Card = ({
   title,
@@ -290,6 +293,24 @@ function setCookie(name: string, value: string, days = 365) {
     "; path=/";
 }
 
+// Neutral greys to match the site palette; light mode prints the dots as ink.
+const dotFieldThemes = {
+  light: {
+    gradientFrom: "#8e8e93",
+    gradientTo: "#c7c7cc",
+    glowColor: "#1d1d1f",
+    baseOpacity: 0.45,
+    lightMode: true,
+  },
+  dark: {
+    gradientFrom: "#8e8e93",
+    gradientTo: "#636366",
+    glowColor: "#ffffff",
+    baseOpacity: 0.55,
+    lightMode: false,
+  },
+};
+
 function App() {
   const [theme, setTheme] = React.useState(() => getCookie("theme") || "light");
 
@@ -304,12 +325,46 @@ function App() {
 
   return (
     <div className="App">
+      <DotField
+        {...(theme === "dark" ? dotFieldThemes.dark : dotFieldThemes.light)}
+        dotRadius={1.3}
+        dotSpacing={18}
+        cursorRadius={200}
+        bulgeStrength={0.35}
+        glowRadius={140}
+        glowIntensity={0.5}
+        holdToZoom={false}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: -1,
+          pointerEvents: "none",
+        }}
+      />
       <>
         <div className="main-container fade-in">
           <header>
             <div className="name-section">
               <div className="header-title">
-                <h1>Nicholas Channg</h1>
+                <h1>
+                  <DecryptedText
+                    text="Nicholas Channg"
+                    animateOn="inViewHover"
+                    effect="scramble"
+                    sequential={true}
+                    revealDirection="start"
+                    speed={60}
+                    maxIterations={10}
+                    hoverRadius={100}
+                    scrambleColor="#2bb673"
+                    loop
+                    loopDelay={10000}
+                    useOriginalCharsOnly={false}
+                    characters="!<>-_/[]{}=+*^?#"
+                    className="revealed"
+                    encryptedClassName="encrypted"
+                  />
+                </h1>
                 <p className="intro-text">Computer Science @ Cornell</p>
                 <p className="intro-text">
                   Interested in Distributed Systems, Infra, & AI Platforms
@@ -359,6 +414,26 @@ function App() {
             <h2 className="section-title">Experience</h2>
             <div className="card-gallery">
               <ExperienceCard
+                title="Incoming Software Engineer"
+                company="Google Cloud"
+                years="Summer 2027"
+                logo={<GoogleCloudLogo />}
+                link="https://cloud.google.com/data-cloud"
+                companyLink="https://cloud.google.com/"
+                metaLeft={
+                  <>
+                    <a
+                      href="https://cloud.google.com/data-cloud"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="card-meta-link"
+                    >
+                      Agentic Data Cloud
+                    </a>
+                  </>
+                }
+              />
+              <ExperienceCard
                 title="Software Engineer Intern"
                 company="Google"
                 years="May 2026-Aug 2026"
@@ -373,7 +448,7 @@ function App() {
                       rel="noopener noreferrer"
                       className="card-meta-link"
                     >
-                      Cloud Knowledge Catalog
+                      Knowledge Catalog
                     </a>
                   </>
                 }
@@ -428,14 +503,14 @@ function App() {
                 degree="B.A. Computer Science"
                 years="2023-2026"
                 link="https://www.cornell.edu"
-                metaLeft="GPA: 3.7"
+                metaLeft="Minors: Artificial Intelligence, Data Science"
               />
               <EducationCard
                 school="Bridgewater-Raritan High School"
                 degree="High School Diploma"
                 years="2019-2023"
                 link="https://hs.brrsd.org/"
-                metaLeft="GPA: 4.7"
+                metaLeft="Top 5% of Graduating Class"
               />
             </div>
 
@@ -512,9 +587,9 @@ function App() {
               <SpotifyNowPlaying />
               <GameCard
                 game="Valorant"
-                currentRank="Diamond 1"
+                currentRank="Diamond 2"
                 peakRank="Immortal 3, #3,825"
-                hoursPlayed={884}
+                hoursPlayed={908}
                 link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
               />
               <GameCard
