@@ -591,7 +591,7 @@ function App() {
                 currentRank="Diamond 2"
                 peakRank="Immortal 3, #3,825"
                 hoursPlayed={908}
-                link="https://tracker.gg/valorant/profile/riot/Flaming%230000/overview?platform=pc&playlist=competitive"
+                link="https://tracker.gg/valorant/profile/riot/flaming%23hogs/overview?platform=pc&playlist=competitive"
               />
               <GameCard
                 game="Fortnite"
