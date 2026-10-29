@@ -11,7 +11,7 @@ import { MoonIcon } from "./icons/MoonIcon";
 import { ExternalLinkIcon } from "./icons/ExternalLinkIcon";
 import SpotifyNowPlaying from "./components/SpotifyNowPlaying";
 import { GoogleLogo } from "./icons/GoogleLogo";
-// import { GoogleCloudLogo } from "./icons/GoogleCloudLogo";
+import { GoogleCloudLogo } from "./icons/GoogleCloudLogo";
 import DecryptedText from "./components/DecryptedText";
 import DotField from "./components/DotField";
 
@@ -414,7 +414,7 @@ function App() {
             <div className="section-divider" />
             <h2 className="section-title">Experience</h2>
             <div className="card-gallery">
-              {/* <ExperienceCard
+              <ExperienceCard
                 title="Incoming Software Engineer"
                 company="Google Cloud"
                 years="Summer 2027"
@@ -433,7 +433,7 @@ function App() {
                     </a>
                   </>
                 }
-              /> */}
+              />
               <ExperienceCard
                 title="Software Engineer Intern"
                 company="Google"
